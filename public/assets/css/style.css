@@ -1,0 +1,160 @@
+.login{
+ 	background: linear-gradient(
+      rgba(12, 11, 3, 0.8), 
+      rgba(12, 11, 3, 0.8)
+    ), url('/./assets/img/login-background.jpg');
+    background-size: cover;
+}
+
+.page-content{
+	min-height: 900px;
+}
+.sub-menu-active{
+	display: block;
+}
+.toggle a i{
+	color: #fff;
+}
+.mt-5{
+	margin-top: 5px !important;
+}
+.ml-5{
+	margin-left: 5px !important;
+}
+.nav_menu{
+	background: #3c8dbc;
+}
+.save-btn{
+	min-width: 100px;
+}
+.error{
+	color: red;
+}
+.is-danger{
+	border: 1px solid red !important;
+}
+.float-right{
+	float: right;
+}
+.alert-success{
+	padding: 5px 10px;
+}
+.active{
+	color: green;
+}
+.inactive{
+	color: red;
+}
+.top_nav .nav .open>a, .top_nav .nav .open>a:focus, .top_nav .nav .open>a:hover, .top_nav .nav>li>a:focus, .top_nav .nav>li>a:hover{
+	background: #1ABB9C;
+}
+.nav.navbar-nav>li>a{
+	color: #fff !important;
+}
+/* Admin Dashboard Home */
+
+.small-box{
+	border-radius: 2px;
+	position: relative;
+	display: block;
+	margin-bottom: 20px;
+	box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+}
+
+.small-box h3, .small-box p{
+	    z-index: 5px;
+}
+.small-box h3{
+	font-size: 38px;
+	font-weight: bold;
+	margin:  0 0 10px 0;
+	white-space: nowrap;
+	padding: 0;
+}
+.small-box p{
+	font-size: 15px;
+}
+.new-bg-aqua{
+	background: #FF8A66;
+	padding: 15px 10px;
+}
+.new-inner h3{
+	color: #fff;
+}
+.new-inner p{
+	color: #fff;
+}
+.new-icon{
+	transition: all .3s linear;
+	position: absolute;
+	top: -10px;
+	right: 10px;
+	z-index: 0;
+	font-size: 90px;
+	color: #fff;
+}
+.new-bg-green{
+	background-color: #4DB7AD;
+	padding: 15px 10px;
+}
+.new-bg-yellow{
+	background-color: #F06292;
+	padding: 15px 10px;
+}
+.new-bg-red{
+	background-color: #9675CE;
+	padding: 15px 10px;
+}
+.employee-atantion{
+	background-color: #fff;
+	border: 1px solid #1BBC9B;
+	margin-top: 10px;
+}
+.employee-atantion h3{
+	display: block;
+	margin: 0;
+	padding: 10px;
+	background-color: #1BBC9B;
+	color: #fff;
+	text-transform: capitalize;
+	font-size: 18px;
+}
+.employee-atantion .table-responsive{
+	padding: 5px;
+}
+.employee-atantion .table-responsive tr th{
+	border: 1px solid #ddd;
+}
+.hmnotice-board{
+	background-color: #fff;
+	border: 1px solid #34AB47;
+	margin-top: 10px;
+}
+.hmnotice-board h3{
+	display: block;
+	margin: 0;
+	padding: 10px;
+	background-color: #34AB47;
+	color: #fff;
+	text-transform: capitalize;
+	font-size: 18px;
+}
+.hmnotice-board .table-responsive{
+	padding: 5px;
+}
+.hmnotice-board .table-responsive tr th{
+	border: 1px solid #ddd;
+}
+.hmnotice-board .table-responsive tr td{
+	border: 1px solid #ddd;
+	text-transform: capitalize;
+}
+
+/* End Admin Dashboard Home */
+
+
+.pagination>.active>a{
+	color: green !important;
+	font-weight: bold;
+	font-size: 16px;
+}
