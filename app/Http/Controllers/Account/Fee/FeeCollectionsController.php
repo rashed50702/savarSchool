@@ -1,21 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Attendance;
+namespace App\Http\Controllers\Account\Fee;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class AttendancesController extends Controller
+class FeeCollectionsController extends Controller
 {
-
-    public function attendanceAddSearchForm()
-    {
-        return view('attendance.attendance-add-search-form', [
-           // 'subjects' => Subject::with('academicClass')->orderBy('class_id','ASC')->paginate(15)
-        ]);
-    }
-
-
     /**
      * Display a listing of the resource.
      *
@@ -23,7 +14,9 @@ class AttendancesController extends Controller
      */
     public function index()
     {
-        //
+        return view('account.fee.fee-collection.index', [
+           // 'subjects' => Subject::with('academicClass')->orderBy('class_id','ASC')->paginate(15)
+        ]);
     }
 
     /**
@@ -33,7 +26,9 @@ class AttendancesController extends Controller
      */
     public function create()
     {
-        //
+        return view('account.fee.fee-collection.create', [
+           // 'subjects' => Subject::with('academicClass')->orderBy('class_id','ASC')->paginate(15)
+        ]);
     }
 
     /**
@@ -46,6 +41,7 @@ class AttendancesController extends Controller
     {
         //
     }
+
     /**
      * Display the specified resource.
      *
@@ -89,20 +85,5 @@ class AttendancesController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-
-    public function attendanceMonthlySearchForm()
-    {
-         return view('attendance.attendance-monthly-search-form', [
-            // 'subjects' => Subject::with('academicClass')->orderBy('class_id','ASC')->paginate(15)
-         ]);   
-    }
-
-    public function attendanceReportSearchForm()
-    {
-         return view('attendance.attendance-report-search-form', [
-            // 'subjects' => Subject::with('academicClass')->orderBy('class_id','ASC')->paginate(15)
-         ]);   
     }
 }

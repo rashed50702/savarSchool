@@ -20,7 +20,7 @@
                 <table id="datatable" class="table table-striped table-bordered" style="color: black">
                     <thead>
                     <tr>
-                        <th>S/L</th>
+                        <th>#</th>
                         <th>Class Name</th>
                         <th>Section Name</th>
                         <th class="text-center">Status</th>

@@ -14,17 +14,17 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4><i class="fa fa-table" aria-hidden="true"></i> <b>@yield('title')</b></h4>
-                <a href="{{ route('classes.create') }}"><span style=" margin-top: -33px;" class="btn btn-primary btn-flat btn-sm pull-right"><i class="fa fa-plus" aria-hidden="true"></i> Add New Class</span></a>
+                <a href="{{ route('classes.create') }}"><span style=" margin-top: -33px;" class="btn btn-primary btn-flat btn-sm pull-right"><i class="fa fa-plus" aria-hidden="true"></i> @lang('form.add_new')</span></a>
             </div>
             <div class="panel-body">
                 <table id="datatable" class="table table-striped table-bordered" style="color: black">
                     <thead>
                     <tr>
-                        <th>S/L</th>
-                        <th>Class Name</th>
-                        <th>Class Code</th>
-                        <th class="text-center">Status</th>
-                        <th class="text-center">Action</th>
+                        <th>#</th>
+                        <th>@lang('left_menu.class_menu') @lang('form.name')</th>
+                        <th>@lang('left_menu.class_menu') @lang('form.code')</th>
+                        <th class="text-center">@lang('form.status')</th>
+                        <th class="text-center">@lang('form.action')</th>
                     </tr>
                     </thead>
                     <tbody>

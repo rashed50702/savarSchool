@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ app()->getLocale() }}">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
@@ -111,7 +111,7 @@
                 <img src="{!! asset('assets/img/img.jpg') !!}" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
-                <span>Welcome,</span>
+                <span>@lang('home.welcome'),</span>
                 <h2>{{{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->email }}}</h2>
               </div>
             </div>
@@ -123,75 +123,148 @@
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <ul class="nav side-menu">
-                  <li class="active"><a href="{{ route('home') }}"><i class="fa fa-home"></i> Home </a>
+                  <li class="active"><a href="{{ route('home') }}"><i class="fa fa-home"></i> @lang('left_menu.home_menu') </a>
                     
                   </li>
+                  @hasrole('admin|principal')
+                  <li><a><i class="fa fa-building-o"></i> @lang('left_menu.academic_menu') <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{ route('classes.index')}}">@lang('left_menu.class_menu')</a></li>
+                      <li><a href="{{ route('sections.index')}}">@lang('left_menu.section_menu')</a></li>
+                      <li><a href="{{ route('subjects.index') }}">@lang('left_menu.subject_menu')</a></li>
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-ticket"></i> @lang('left_menu.admission_menu') <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{ route('registration.create') }}">@lang('left_menu.new_registration_menu')</a></li>
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-graduation-cap"></i> @lang('left_menu.student_menu') <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{ route('students.index') }}">@lang('left_menu.student_list_menu')</a></li>
+                      <li><a href="{{ route('gurdians.index') }}"">@lang('left_menu.guardian_list_menu')</a></li>
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-clock-o"></i> @lang('left_menu.student_attendance_menu') <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{ route('student-attendances.add-search-form') }}">@lang('left_menu.add_attendance_menu')</a></li>
+                      <li><a href="{{ route('student-attendances.monthly') }}">@lang('left_menu.attendance_monthly_report_menu')</a></li>
+                      <li><a href="{{ route('student-attendances.report') }}">@lang('left_menu.attendance_report_menu')</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="{{ route('teachers.index') }}"><i class="fa fa-users"></i> @lang('left_menu.teacher_menu')</a></li>
+                  <li><a><i class="fa fa-clock-o"></i> @lang('left_menu.teacher_attendance_menu') <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{ route('teacher-attendances.add-search-form') }}">@lang('left_menu.add_attendance_menu')</a></li>
+                      <li><a href="{{ route('teacher-attendances.monthly') }}">@lang('left_menu.attendance_monthly_report_menu')</a></li>
+                      <li><a href="{{ route('teacher-attendances.report') }}">@lang('left_menu.attendance_report_menu')</a></li>
+                    </ul>
+                  </li>
+                  @endhasrole
+                  @hasrole('teacher')
+                  <li> <a href="{{ route('give-attendance') }}"><i class="fa fa-clock-o"></i> @lang('left_menu.attendance_menu')</a> </li>
+                  <li><a><i class="fa fa-clock-o"></i> @lang('left_menu.student_attendance_menu') <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{ route('student-attendances.add-search-form') }}">@lang('left_menu.add_attendance_menu')</a></li>
+                      <li><a href="{{ route('student-attendances.monthly') }}">@lang('left_menu.attendance_monthly_report_menu')</a></li>
+                      <li><a href="{{ route('student-attendances.report') }}">@lang('left_menu.attendance_report_menu')</a></li>
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-graduation-cap"></i> @lang('left_menu.student_menu') <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{ route('students.index') }}">@lang('left_menu.student_list_menu')</a></li>
+                      <li><a href="{{ route('gurdians.index') }}"">@lang('left_menu.guardian_list_menu')</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="{{ route('teachers.index') }}"><i class="fa fa-users"></i> @lang('left_menu.teacher_menu')</a></li>
+                  @endhasrole
+                  @hasrole('admin|principal')
+                  <li><a><i class="fa fa-calendar"></i> @lang('left_menu.class_routine_menu') <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">                      
+                      <li><a href="{{ route('class-routines.create') }}">@lang('left_menu.add_class_routine_menu')</a></li>
+                      <li><a href="{{ route('class-routines.search-form') }}">@lang('left_menu.class_routine_menu')</a></li>
+                    </ul>
+                  </li>
+                  @endhasrole
+                  @hasrole('student')
+                    <li><a href="{{ route('student.class-routine') }}"><i class="fa fa-calendar"></i> @lang('left_menu.class_routine_menu')</a></li>
+                    <li> <a href="{{ route('give-attendance') }}"><i class="fa fa-clock-o"></i> @lang('left_menu.attendance_menu')</a> </li>
+                  @endhasrole
+                  @hasrole('admin|principal')
+                  <li><a><i class="fa fa-sticky-note"></i> @lang('left_menu.exam_menu') <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">                      
+                      <li><a href="{{ route('exams.index') }}">@lang('left_menu.exam_list_menu')</a></li>
+                      <li><a href="{{ route('exam-schedules.create') }}">@lang('left_menu.exam_schedule_add_menu')</a></li>
+                      <li><a href="{{ route('exam-schedules.search-form') }}">@lang('left_menu.exam_schedule_list_menu')</a></li>
+                      {{-- <li><a href="#">Admit Card Management</a></li> --}}
+                    </ul>
+                  </li>
+                  @endhasrole
+                  @hasrole('admin|principal')
+                  <li><a><i class="fa fa-trophy"></i> @lang('left_menu.result_menu') <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">                      
+                      <li><a href="{{ route('results.grades.index') }}">@lang('left_menu.grade_list_menu')</a></li>
+                      <li><a href="{{ route('results.add-search-form') }}">@lang('left_menu.result_submit_menu')</a></li>
+                      <li><a href="{{ route('results.index') }}">@lang('left_menu.result_published_menu')</a></li>
+                      <li><a href="{{ route('results.exam-search-form') }}">@lang('left_menu.exam_result_menu')</a></li>
+                    </ul>
+                  </li>
+                  @endhasrole
+                  @hasrole('admin|accountant|principal')
+                  <li><a><i class="fa fa-bank"></i> @lang('left_menu.account') <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{ route('accounts.fees.fee-types.create') }}">@lang('left_menu.add_fee_type')</a></li>
+                      <li><a href="{{ route('accounts.fees.fee-types.index') }}">@lang('left_menu.fee_type_list')</a></li>
+                      <li><a href="{{ route('accounts.fees.collections.index') }}">@lang('left_menu.fee_collection')</a></li>
+                    </ul>
+                  </li>
+                  @endhasrole
+                  @hasrole('admin')
+                  <li><a><i class="fa fa-tasks"></i> @lang('left_menu.administration') <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{ route('users.list') }}">@lang('left_menu.users')</a></li>
+                    </ul>
+                  </li>
+                  @endhasrole
+                  @hasrole('principal')
+                  <li><a><i class="fa fa-tasks"></i> @lang('left_menu.administration') <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="#">@lang('left_menu.accountant')</a></li>
+                    </ul>
+                  </li>
+                  @endhasrole
+                  @hasrole('admin|principal|teacher|student|guest')
+                  <li><a href="{{ route('notices.index') }}"><i class="fa fa-clipboard"></i> @lang('left_menu.notice_board')</a></li>
+                  {{-- <li><a href="#"><i class="fa fa-certificate"></i> Certificate</a></li> --}}
+                  @endhasrole
 
-                  <li><a><i class="fa fa-building-o"></i> Academic <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="{{ route('classes.index')}}">Class</a></li>
-                      <li><a href="{{ route('sections.index')}}">Section</a></li>
-                      <li><a href="{{ route('subjects.index') }}">Subject</a></li>
-                    </ul>
+                  @hasrole('admin|guest-view')
+                  <li><a href="{{ route('institues.index') }}"><i class="fa fa-university"></i> @lang('left_menu.institues')</a></li>
+                  @endhasrole
+                  @hasrole('admin|principal')
+                  <li><a href="{{ route('certificates.index') }}"><i class="fa fa-certificate"></i> @lang('left_menu.certificate')</a></li>
+                  <li><a href="{{ route('testimonials.index') }}"><i class="fa fa-star"></i> @lang('left_menu.testimonial')</a></li>
+                  @endhasrole
+                  <hr>
+                  <li><a href="{{ route('logout') }}"
+                                              onclick="event.preventDefault();
+                                                       document.getElementById('logout-form').submit();">
+                                                       <i class="fa fa-sign-out"></i> @lang('left_menu.logout')
+                      </a>
+                      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                          {{ csrf_field() }}
+                      </form>
                   </li>
-                  <li><a><i class="fa fa-ticket"></i> Admission <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="{{ route('registration.create') }}">New Registration</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="fa fa-graduation-cap"></i> Students <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="{{ route('students.index') }}">Student List</a></li>
-                      <li><a href="{{ route('gurdians.index') }}"">Guardian List</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="fa fa-clock-o"></i> Attendance <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="{{ route('attendances.add-search-form') }}">Add Attendance</a></li>
-                      <li><a href="{{ route('attendances.monthly') }}">Attendance Monthly Report</a></li>
-                      <li><a href="{{ route('attendances.report') }}">Attendance Report</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="fa fa-calendar"></i> Class Routine <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">                      
-                      <li><a href="#">Period Management</a></li>
-                      <li><a href="#">Add Class Routine</a></li>
-                      <li><a href="#">Class Routines</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="fa fa-sticky-note"></i> Exam <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">                      
-                      <li><a href="#">Exam List</a></li>
-                      <li><a href="#">Exam Schedule Add</a></li>
-                      <li><a href="#">Exam Schedule List</a></li>
-                      <li><a href="#">Exam Attendance</a></li>
-                      <li><a href="#">Admit Card Management</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="fa fa-trophy"></i> Result <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">                      
-                      <li><a href="#">Grade List</a></li>
-                      <li><a href="#">Result Submit</a></li>
-                      <li><a href="#">Result Published</a></li>
-                      <li><a href="#">Exam Result</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="fa fa-bank"></i> Accounts <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="#">Add Fee Type</a></li>
-                      <li><a href="#">Fee Type List</a></li>
-                      <li><a href="#">Fee Collection</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="#"><i class="fa fa-tasks"></i> Administration</a></li>
-                  <li><a href="#"><i class="fa fa-clipboard"></i> Notice Board</a></li>
-                  <li><a href="#"><i class="fa fa-certificate"></i> Certificate</a></li>
-                  <li><a href="#"><i class="fa fa-star"></i> Testimonial</a></li>
+                  <li>&nbsp;</li>
+                  <li>&nbsp;</li>
+                  <li>&nbsp;</li>
+                  <li>&nbsp;</li>
+                  {{-- <li><a href="#"><i class="fa fa-certificate"></i> Certificate</a></li>
+                  <li><a href="#"><i class="fa fa-star"></i> Testimonial</a></li> --}}
                   {{-- <li><a href="#"><i class="fa fa-sticky-note-o"></i> Memo</a></li>
                   <li><a href="#"><i class="fa fa-book"></i> Book Order</a></li> --}}
-                  <li><a href="#"><i class="fa fa-university"></i> Institutes</a></li>                  
-                  <li><a href="#"><i class="fa fa-building"></i> Library</a>
-                </ul>
+{{--                   <li><a href="#"><i class="fa fa-building"></i> Library</a></li>
+ --}}                </ul>
               </div>
 
             </div>
@@ -208,24 +281,25 @@
               </div>
 
               <ul class="nav navbar-nav navbar-right">
+
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                     <img src="{!! asset('assets/img/img.jpg') !!}" alt="">{{{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->email }}}
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="{{ route('profile') }}"> Profile</a></li>
+                    <li><a href="{{ route('profile') }}"> @lang('home.profile')</a></li>
                     <li>
                       <a href="javascript:;">
                         <span class="badge bg-red pull-right">50%</span>
-                        <span>Settings</span>
+                        <span>@lang('home.settings')</span>
                       </a>
                     </li>
-                    <li><a href="javascript:;">Help</a></li>
+                    <li><a href="javascript:;">@lang('home.help')</a></li>
                     <li><a href="{{ route('logout') }}"
                                                 onclick="event.preventDefault();
                                                          document.getElementById('logout-form').submit();">
-                                                         <i class="fa fa-sign-out pull-right"></i> Log Out
+                                                         <i class="fa fa-sign-out pull-right"></i> @lang('left_menu.logout')
                         </a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             {{ csrf_field() }}
@@ -233,6 +307,8 @@
                     </li>
                   </ul>
                 </li>
+                <li class="localization"><a href="{{ url('locale/bn') }}"> <img src="{{ asset('assets/localization/bn.png') }}" alt=""> </a> </li>
+                <li class="localization"><a href="{{ url('locale/en') }}"> <img src="{{ asset('assets/localization/en.png') }}" alt=""> </a> </li>
 
 
               </ul>
@@ -285,7 +361,7 @@
     <!-- sweetalert -->
     <script src="{!! asset('assets/plugins/sweetalert/sweetalert-dev.js') !!}"></script>
     <script src="{!! asset('assets/plugins/select2/js/select2.js') !!}"></script>
-    
+      
     <script>
           @if(Session::has('message'))
             var type = "{{ Session::get('alert-type', 'info') }}";
@@ -400,10 +476,12 @@
      function renderSelect2() {
         $(".select2").select2();
     }
-
-
-
-   
+  $(function () {
+      $('#datetimepicker12').datetimepicker({
+          inline: true,
+          sideBySide: true
+      });
+  });   
 </script>
 
  @yield('page_scripts')

@@ -23,6 +23,7 @@
                         <th>S/L</th>
                         <th>Full Name</th>
                         <th>Student Photo</th>
+                        <th>QR Code</th>
                         <th>Admission No</th>
                         <th>Student Class</th>
                         <th>Academic Year</th>
@@ -31,21 +32,24 @@
                     </tr>
                     </thead>
                     <tbody>
-                    {{-- @if(count($subjects) > 0 )
-                    @foreach($subjects as $key=>$value)
-                        <tr class="{{$value->id}}">
-                            <td>{{ ++$key }}</td>
-                            <td>{{ $value->name }}</td>
-                            <td>{{ $value->code }}</td>
-                            <td>{{ $value->academicClass->name }}</td>
-                            <td class="text-center {{ $value->status == 1 ? 'active' : 'inactive' }}">{{ $value->status == 1 ? 'Active' : 'Inactive' }}</td>
+                        <tr>
+                            <td>1</td>
+                            <td>Ashikuzzaman</td>
+                            <td>
+                                <img width="80px" class="img-responsive" src="{{ asset('assets/img/img.jpg') }}" alt="student-photo">
+                            </td>
+                            <td>
+                                <img width="80px" class="img-responsive" src="{{ asset('assets/img/qr.png') }}" alt="qr-code">
+                            </td>
+                            <td>50005</td>
+                            <td>Six</td>
+                            <td>2019</td>
+                            <td>123456789</td>
                             <td class="text-center">
                                 <a href="#" class="btn btn-success btn-xs"><i class="fa fa-edit" title="edit"></i></a>  
-                                <a href="{!! route('subjects.destroy',$value->id )!!}" class="delete btn btn-danger btn-xs deleteBtn btnColor"  data-token="{!! csrf_token() !!}" data-id="{!! $value->id !!}" title="delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                <a href="#" class="delete btn btn-danger btn-xs deleteBtn btnColor" title="delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                             </td>
                         </tr>
-                    @endforeach
-                    @endif --}}
                     </tbody>
                 </table>
             </div>

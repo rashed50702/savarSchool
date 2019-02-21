@@ -38,4 +38,18 @@ class HomeController extends Controller
     {
         return Auth::user()->id;
     }
+
+    public function userList()
+    {
+        return view('user.user-list', [
+           // 'subjects' => Subject::with('academicClass')->orderBy('class_id','ASC')->paginate(15)
+        ]);
+    }
+
+    public function userCreate()
+    {
+        return view('user.create', [
+           // 'subjects' => Subject::with('academicClass')->orderBy('class_id','ASC')->paginate(15)
+        ]);
+    }
 }

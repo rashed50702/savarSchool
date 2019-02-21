@@ -51,7 +51,10 @@
 .nav.navbar-nav>li>a{
 	color: #fff !important;
 }
-/* Admin Dashboard Home */
+.table > tbody > tr > td {
+     vertical-align: middle;
+}
+/* Dashboard Home */
 
 .small-box{
 	border-radius: 2px;
@@ -149,8 +152,37 @@
 	border: 1px solid #ddd;
 	text-transform: capitalize;
 }
+	/* student home */
+	.agenda {  }
 
-/* End Admin Dashboard Home */
+	/* Dates */
+	.agenda .agenda-date { width: 170px; }
+	.agenda .agenda-date .dayofmonth {
+	  width: 40px;
+	  font-size: 36px;
+	  line-height: 36px;
+	  float: left;
+	  text-align: right;
+	  margin-right: 10px; 
+	}
+	.agenda .agenda-date .shortdate {
+	  font-size: 0.75em; 
+	}
+
+
+	/* Times */
+	.agenda .agenda-time { width: 140px; } 
+
+
+	/* Events */
+	.agenda .agenda-events {  } 
+	.agenda .agenda-events .agenda-event {  } 
+
+	@media (max-width: 767px) {
+	    
+	}
+	/* end student home */
+/* End Dashboard Home */
 
 
 .pagination>.active>a{
@@ -158,3 +190,94 @@
 	font-weight: bold;
 	font-size: 16px;
 }
+.fee-type{
+	border-top: 3px solid green;
+}
+.certificate p{
+	padding: 5px;
+	word-spacing: 5px;
+}
+.certificate input{
+	margin: 10px 0px;
+	line-height: 2.42857143;
+	background-color: #fff;
+	color: #555;
+	border: 1px solid #ccc;
+	box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+}
+/* datepicker */
+.calendar{
+	border: 2px solid #1f567c;
+	margin-top: 10px;
+	min-height: 400px;
+	text-align: center;
+}
+.calendar h4{
+	background-color: #1f567c;
+	color: #fff;
+	padding: 10px;
+}
+/* end datepicker */
+/* navbar flag img */
+.localization img{
+	width: 30px;
+}
+
+/* end navbar flag img */
+.exam-marks{
+	padding: 5px;
+}
+/* toggle switch button */
+<style>
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+</style>

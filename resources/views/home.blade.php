@@ -1,15 +1,41 @@
 @extends('layouts.app')
 @section('content')
 @section('title','Home')
-<h3>Dashboard <small>Control Panel</small></h3>
+
+  <h3>
+    @role('admin')
+      Admin
+    @endrole
+    @role('principal')
+      Principal
+    @endrole
+    @role('office-staff')
+      Office Staff
+    @endrole
+    @role('accountant')
+      Accountant
+    @endrole
+    @role('teacher')
+      Teacher
+    @endrole
+    @role('student')
+      Student
+    @endrole
+    @role('guest-view')
+      Guest
+    @endrole
+     @lang('home.dashboard') <small>@lang('home.control_panel')</small></h3>
 <hr>
+
+@hasrole('admin|principal|teacher')
+
 <div class="row">
         <div class="col-lg-4 col-xs-6">
           <!-- small box -->
           <div class="small-box new-bg-aqua">
             <div class="new-inner">
               <h3>3</h3>
-              <p>Total Student</p>
+              <p>@lang('home.total_students')</p>
             </div>
             <div class="new-icon">
               <i class="fa fa-graduation-cap"></i>
@@ -23,7 +49,7 @@
           <div class="small-box new-bg-green">
             <div class="new-inner">
               <h3>3</h3>
-              <p>Total Teacher</p>
+              <p>@lang('home.total_teachers')</p>
             </div>
             <div class="new-icon">
               <i class="fa fa-user-plus"></i>
@@ -37,7 +63,7 @@
           <div class="small-box new-bg-yellow">
             <div class="new-inner">
               <h3>2</h3>
-              <p>User</p>
+              <p>@lang('home.total_users')</p>
             </div>
             <div class="new-icon">
               <i class="fa fa-user"></i>
@@ -49,9 +75,102 @@
         
         <!-- ./col -->
 </div>
+@endhasrole
+@hasrole('admin|principal|teacher|student|guest-view|accountant')
+
+<div class="row">
+  <div class="col-md-12">
+    <a class="weatherwidget-io" href="https://forecast7.com/en/40d71n74d01/new-york/" data-label_1="@lang('home.bangladesh')" data-label_2="@lang('home.weather')" data-theme="original" >@lang('home.bangladesh') @lang('home.weather')</a>
+    <script>
+    !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
+    </script>
+  </div>
+</div>
 <div class="row">
   <div class="col-md-6">
-    <div class="employee-atantion">
+    <div class="calendar">
+        <h4>@lang('home.calendar')</h4>
+        <hr>
+      <div id="datetimepicker12"></div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="title text-center" style="background-color: green; padding: 5px; color: #fff;">
+          <h3>@lang('home.event_schedules')</h3>
+        </div>
+        <div class="agenda">
+            <div class="table-responsive">
+                <table class="table table-condensed table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Event</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Single event in a single day -->
+                        <tr>
+                            <td class="agenda-date" class="active" rowspan="1">
+                                <div class="dayofmonth">26</div>
+                                <div class="dayofweek">Saturday</div>
+                                <div class="shortdate text-muted">July, 2014</div>
+                            </td>
+                            <td class="agenda-time">
+                                5:30 AM
+                            </td>
+                            <td class="agenda-events">
+                                <div class="agenda-event">
+                                    <i class="glyphicon glyphicon-repeat text-muted" title="Repeating event"></i> 
+                                    Fishing
+                                </div>
+                            </td>
+                        </tr>
+                        
+                        <!-- Multiple events in a single day (note the rowspan) -->
+                        <tr>
+                            <td class="agenda-date" class="active" rowspan="3">
+                                <div class="dayofmonth">24</div>
+                                <div class="dayofweek">Thursday</div>
+                                <div class="shortdate text-muted">July, 2014</div>
+                            </td>
+                            <td class="agenda-time">
+                                8:00 - 9:00 AM 
+                            </td>
+                            <td class="agenda-events">
+                                <div class="agenda-event">
+                                    Doctor's Appointment
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="agenda-time">
+                                10:15 AM - 12:00 PM 
+                            </td>
+                            <td class="agenda-events">
+                                <div class="agenda-event">
+                                    Meeting with executives
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="agenda-time">
+                                7:00 - 9:00 PM
+                            </td>
+                            <td class="agenda-events">
+                                <div class="agenda-event">
+                                    Aria's dance recital
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+      </div>
+    </div>
+    {{-- <div class="employee-atantion">
       <h3>Today's employee attendance</h3>
       <div class="table-responsive">
         <table class="table">
@@ -131,11 +250,11 @@
           </tbody>
         </table>
       </div>
-    </div>
+    </div> --}}
   </div>
   <div class="col-md-6">
     <div class="hmnotice-board">
-      <h3>Notice board</h3>
+      <h3>@lang('home.notice_board')</h3>
       <div class="table-responsive">
         <table class="table">
           <tbody>
@@ -249,6 +368,9 @@
     </div>
   </div>
 </div>
+
+@endhasrole
+
 {{-- 
 <div class="row tile_count">
     <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">

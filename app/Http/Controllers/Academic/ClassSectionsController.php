@@ -22,6 +22,13 @@ class ClassSectionsController extends Controller
         ]);
     }
 
+    public function getClasses()
+    {
+        $classes = AcademicClass::where('status', 1)->get();
+
+        return $classes;
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -29,6 +36,7 @@ class ClassSectionsController extends Controller
      */
     public function create()
     {
+        //return AcademicClass::orderBy('name','ASC')->where('status', 1)->get();
         return view('academic.section.create', [
             'academicClasses' => AcademicClass::orderBy('name','ASC')->where('status', 1)->get()
         ]);

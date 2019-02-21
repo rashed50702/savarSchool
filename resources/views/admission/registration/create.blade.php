@@ -21,7 +21,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4><i class="fa fa-file-text-o" aria-hidden="true"></i> <b>@yield('title')</b></h4>
-                        <a href="#"><span style=" margin-top: -33px;" class="btn btn-primary btn-flat btn-sm pull-right"><i class="fa fa-list-ul" aria-hidden="true"></i> Students List</span></a>
+                        <a href="{{ route('students.index') }}"><span style=" margin-top: -33px;" class="btn btn-primary btn-flat btn-sm pull-right"><i class="fa fa-list-ul" aria-hidden="true"></i> Students List</span></a>
                     </div>
                     <div class="panel-body">
                         
@@ -39,20 +39,20 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="name" class="control-label">Full Name <span class="star"><i class="fa fa-star"></i></span></label>
-                                                        <input type="text" name="name" class="form-control" id="name" placeholder="Full Name">
+                                                        <label for="name" class="control-label">@lang('form.full_name') <span class="star"><i class="fa fa-star"></i></span></label>
+                                                        <input type="text" name="name" class="form-control" id="name" placeholder="@lang('form.full_name')">
                                                         {{-- <p v-if="errors.name" class="error">@{{ errors.name[0] }}</p> --}}
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="gender" class="control-label">Gender <span class="star"><i class="fa fa-star"></i></span></label>
+                                                        <label for="gender" class="control-label">@lang('form.gender') <span class="star"><i class="fa fa-star"></i></span></label>
                                                         <div>
                                                             <label class="radio-inline ml-5">
-                                                              <input type="radio" name="gender" v-model="gender" value="1" checked=""><strong>Male</strong>
+                                                              <input type="radio" name="gender" v-model="gender" value="1" checked=""><strong>@lang('form.male')</strong>
                                                             </label>
                                                             <label class="radio-inline">
-                                                              <input type="radio" name="gender" v-model="gender" value="0"><strong>Female</strong>
+                                                              <input type="radio" name="gender" v-model="gender" value="0"><strong>@lang('form.female')</strong>
                                                             </label>
                                                         </div>
                                                     </div>
@@ -62,15 +62,15 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="dob" class="control-label">Date Of Birth <span class="star"><i class="fa fa-star"></i></span></label>
-                                                        <input type="text" name="dob" class="form-control" id="dob" placeholder="Date Of Birth">
+                                                        <label for="dob" class="control-label">@lang('form.dob') <span class="star"><i class="fa fa-star"></i></span></label>
+                                                        <input type="text" name="dob" class="form-control" id="dob" placeholder="@lang('form.dob')">
                                                         {{-- <p v-if="errors.dob" class="error">@{{ errors.dob[0] }}</p> --}}
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="religion" class="control-label">Religion <span class="star"><i class="fa fa-star"></i></span></label>
-                                                        <input type="text" name="religion" class="form-control" id="religion" placeholder="Religion">
+                                                        <label for="religion" class="control-label">@lang('form.religion') <span class="star"><i class="fa fa-star"></i></span></label>
+                                                        <input type="text" name="religion" class="form-control" id="religion" placeholder="@lang('form.religion')">
                                                         {{-- <p v-if="errors.religion" class="error">@{{ errors.religion[0] }}</p> --}}
                                                     </div>
                                                 </div>
@@ -78,14 +78,14 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="phone_no" class="control-label">Phone No <span class="star"><i class="fa fa-star"></i></span></label>
+                                                        <label for="phone_no" class="control-label">@lang('form.phone_no') <span class="star"><i class="fa fa-star"></i></span></label>
                                                         <input type="text" name="phone_no" class="form-control" id="phone_no" placeholder="xxxxxxxxxx">
                                                         {{-- <p v-if="errors.phone_no" class="error">@{{ errors.phone_no[0] }}</p> --}}
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="email" class="control-label">Email <span class="star"><i class="fa fa-star"></i></span></label>
+                                                        <label for="email" class="control-label">@lang('form.email') <span class="star"><i class="fa fa-star"></i></span></label>
                                                         <input type="text" name="email" class="form-control" id="email" placeholder="example@example.com">
                                                         {{-- <p v-if="errors.email" class="error">@{{ errors.email[0] }}</p> --}}
                                                     </div>
@@ -94,15 +94,15 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="present_address" class="control-label">Present Address <span class="star"><i class="fa fa-star"></i></span></label>
-                                                        <input type="text" name="present_address" class="form-control" id="present_address" placeholder="Present Address">
+                                                        <label for="present_address" class="control-label">@lang('form.present_address') <span class="star"><i class="fa fa-star"></i></span></label>
+                                                        <input type="text" name="present_address" class="form-control" id="present_address" placeholder="@lang('form.present_address')">
                                                         {{-- <p v-if="errors.present_address" class="error">@{{ errors.present_address[0] }}</p> --}}
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="permanent_address" class="control-label">Permanent Address <span class="star"><i class="fa fa-star"></i></span></label>
-                                                        <input type="text" name="permanent_address" class="form-control" id="permanent_address" placeholder="Permanent Address">
+                                                        <label for="permanent_address" class="control-label">@lang('form.permanent_address') <span class="star"><i class="fa fa-star"></i></span></label>
+                                                        <input type="text" name="permanent_address" class="form-control" id="permanent_address" placeholder="@lang('form.permanent_address')">
                                                         {{-- <p v-if="errors.permanent_address" class="error">@{{ errors.permanent_address[0] }}</p> --}}
                                                     </div>
                                                 </div>
@@ -110,15 +110,15 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="blood_group" class="control-label">Blood Group <span class="star"><i class="fa fa-star"></i></span></label>
-                                                        <input type="text" name="blood_group" class="form-control" id="blood_group" placeholder="Blood Group">
+                                                        <label for="blood_group" class="control-label">@lang('form.blood_group') <span class="star"><i class="fa fa-star"></i></span></label>
+                                                        <input type="text" name="blood_group" class="form-control" id="blood_group" placeholder="@lang('form.blood_group')">
                                                         {{-- <p v-if="errors.blood_group" class="error">@{{ errors.blood_group[0] }}</p> --}}
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="photo" class="control-label">Photo <span class="star"><i class="fa fa-star"></i></span></label>
-                                                        <input type="file" name="photo" class="form-control" id="photo" placeholder="photo">
+                                                        <label for="photo" class="control-label">@lang('form.photo') <span class="star"><i class="fa fa-star"></i></span></label>
+                                                        <input type="file" name="photo" class="form-control" id="photo" placeholder="@lang('form.photo')">
                                                         {{-- <p v-if="errors.photo" class="error">@{{ errors.photo[0] }}</p> --}}
                                                     </div>
                                                 </div>

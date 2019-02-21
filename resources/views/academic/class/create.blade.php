@@ -22,7 +22,7 @@
                     <div class="panel-heading">
                       
                         <h4><i class="fa fa-file-text-o" aria-hidden="true"></i> <b>@yield('title')</b></h4>
-                        <a href="{{ route('classes.index') }}"><span style=" margin-top: -33px;" class="btn btn-primary btn-flat btn-sm pull-right"><i class="fa fa-list-ul" aria-hidden="true"></i> Classes List</span></a>
+                        <a href="{{ route('classes.index') }}"><span style=" margin-top: -33px;" class="btn btn-primary btn-flat btn-sm pull-right"><i class="fa fa-list-ul" aria-hidden="true"></i> @lang('left_menu.class_menu') @lang('form.list')</span></a>
                     </div>
                     <div class="panel-body">
                         
@@ -35,17 +35,27 @@
                                         <div class="panel-body">
                                             <p v-if="successMessage"><strong class="alert-success">@{{ successMessage }}</strong></p>
                                             <div class="row">
+                                                <div class="col-sm-1">
+                                                    <div width="100px">
+                                                        <label class="switch">
+                                                          <input type="checkbox" v-model="checked" @change="onChange">
+                                                          <span class="slider"></span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="class_name" class="control-label">Class Name <span class="star"><i class="fa fa-star"></i></span></label>
-                                                        <input type="text" name="name" v-model="name" class="form-control" :class="{ 'is-danger':errors.name }" id="name" placeholder="Class Name">
+                                                        <label for="class_name" class="control-label">@lang('left_menu.class_menu') @lang('form.name') <span class="star"><i class="fa fa-star"></i></span></label>
+                                                        <input type="text" name="name" v-model="name" class="form-control" :class="{ 'is-danger':errors.name }" id="name" placeholder="@lang('left_menu.class_menu') @lang('form.name')">
                                                         <p v-if="errors.name" class="error">@{{ errors.name[0] }}</p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="code" class="control-label">Code <span class="star"><i class="fa fa-star"></i></span></label>
-                                                        <input type="text" name="code" v-model="code" class="form-control" :class="{ 'is-danger':errors.code }" id="code" placeholder="Code">
+                                                        <label for="code" class="control-label">@lang('left_menu.class_menu') @lang('form.code') <span class="star"><i class="fa fa-star"></i></span></label>
+                                                        <input type="text" name="code" v-model="code" class="form-control" :class="{ 'is-danger':errors.code }" id="code" placeholder="@lang('left_menu.class_menu') @lang('form.code')">
                                                         <p v-if="errors.code" class="error">@{{ errors.code[0] }}</p>
                                                     </div>
                                                 </div>
@@ -53,13 +63,13 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="status" class="control-label">Status <span class="star"><i class="fa fa-star"></i></span></label>
+                                                        <label for="status" class="control-label">@lang('form.status') <span class="star"><i class="fa fa-star"></i></span></label>
                                                         
                                                         <label class="radio-inline ml-5">
-                                                          <input type="radio" name="status" v-model="status" value="1" checked=""><strong>Active</strong>
+                                                          <input type="radio" name="status" v-model="status" value="1" checked=""><strong>@lang('form.active')</strong>
                                                         </label>
                                                         <label class="radio-inline">
-                                                          <input type="radio" name="status" v-model="status" value="0"><strong>Inactive</strong>
+                                                          <input type="radio" name="status" v-model="status" value="0"><strong>@lang('form.inactive')</strong>
                                                         </label>
                                                     </div>
                                                     <p v-if="errors.status" class="error">@{{ errors.status[0] }}</p>
@@ -68,8 +78,8 @@
                                             </div>
                                             <hr>
                                             <div class="form-group">
-                                                <button type="submit" class="btn btn-success save-btn"><i class="fa fa-check"></i> Save</button>
-                                                <a href="{{ route('classes.index') }}" class="btn btn-danger"><i class="fa fa-exclamation-circle"></i> Cancel</a>
+                                                <button type="submit" class="btn btn-success save-btn"><i class="fa fa-check"></i> @lang('form.save')</button>
+                                                <a href="{{ route('classes.index') }}" class="btn btn-danger"><i class="fa fa-exclamation-circle"></i> @lang('form.cancel')</a>
                                             </div>
                                         </div>
                                     </div>
@@ -96,7 +106,8 @@
         code: '',
         status: '',
         errors: {},
-        successMessage: ''
+        successMessage: '',
+        checked: false,
       },
       
       methods: {
@@ -117,7 +128,10 @@
                 this.errors = error.response.data.errors,
                 this.successMessage = ""
               });
-        }
+        },
+        onChange(){
+            this.$emit('input', this.checked)
+        },
       }
     })
 </script>

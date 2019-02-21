@@ -38,12 +38,9 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="className" class="control-label">Select Class <span class="star"><i class="fa fa-star"></i></span></label>
-                                                        <select name="className" v-model="className" id="className" class="form-control">
-                                                            <option value="">Select class name</option>
-                                                            @foreach($academicClasses as $academicClass)
-                                                            <option value="{!! $academicClass->id !!}">{!! $academicClass->name !!}</option>
-                                                            @endforeach
-                                                        </select>
+
+                                                        <v-select name="className" v-model="className" :options="academicClasses.map(academicClasses => ({label: academicClasses.cname, value: academicClasses.id}))"></v-select>
+
                                                         <p v-if="errors.className" class="error">@{{ errors.className[0] }}</p>
                                                     </div>
                                                 </div>
@@ -92,22 +89,35 @@
 @section('page_scripts')
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://unpkg.com/vue-select@latest"></script>
 
 <script>
+    Vue.component('v-select', VueSelect.VueSelect);
+
     var app = new Vue({
       el: '#pageContent',
       data: {
         className: '',
+        academicClasses: [],
+        academicClasses: [
+            @foreach($academicClasses as $ac)
+                {
+                    id: '{{ $ac->id }}',
+                    cname: '{{ $ac->name }}' 
+                },
+            @endforeach
+        ],
         name: '',
         status: '',
         errors: {},
-        successMessage: ''
+        successMessage: '',
       },
       
       methods: {
         addSection(){
+            //alert(this.className.value);
             axios.post('/academic/sections', {
-                className: this.className,
+                className: this.className.value,
                 name: this.name,
                 status: this.status,
               })
@@ -117,13 +127,22 @@
                 this.name = "",
                 this.status = "",
                 this.errors = ""
+                //setTimeout(this.hideMessage, 1000);
               })
               .catch((error) => {
                 this.errors = error.response.data.errors,
                 this.successMessage = ""
               });
+        },
+        hideMessage(){
+
         }
-      }
+      },
+      // mounted(){
+      //   setTimeout(() => {
+      //       this.successMessage = '';
+      //   }, 500);
+      // }
     })
 </script>
 @endsection
